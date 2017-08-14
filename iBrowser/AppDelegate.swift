@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +18,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseProvider.sharedInstance.configurarFirebase()
+        
+        if FirebaseProvider.sharedInstance.usuarioLogado(){
+            comecarLogadoComoPai()
+            FirebaseProvider.sharedInstance.adicionarObservadorDeAutenticacao()
+        }else{
+            if (UserDefaultsProvider.getDispID() != nil) && (UserDefaultsProvider.getGerenteID() != nil){
+                comecarNoNavegador()
+            }else{
+                comecarNoLogin()
+                
+            }
+            
+        }
+        
+        
+    
         return true
+    }
+    func comecarNoNavegador(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navegadorViewController: NavegadorViewController = mainStoryboard.instantiateViewController(withIdentifier: "NavegadorViewController") as! NavegadorViewController
+        
+        self.window!.rootViewController = navegadorViewController
+        self.window?.makeKeyAndVisible()
+    }
+    func comecarNoLogin(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let nav1 = UINavigationController()
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let startViewController: StartViewController = mainStoryboard.instantiateViewController(withIdentifier: "StartViewController") as! StartViewController
+        nav1.viewControllers = [startViewController]
+        self.window!.rootViewController = nav1
+        self.window?.makeKeyAndVisible()
+    }
+    func comecarLogadoComoPai(){
+        
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let nav1 = UINavigationController()
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let paiTabBarViewController: PaiTabBarViewController = mainStoryboard.instantiateViewController(withIdentifier: "PaiTabBarViewController") as! PaiTabBarViewController
+            nav1.viewControllers = [paiTabBarViewController]
+            self.window!.rootViewController = nav1
+            self.window?.makeKeyAndVisible()
+        
+    }
+    
+    func irParaLogin(){
+        if !(UIApplication.topViewController() is StartViewController){
+            let oldViewController = UIApplication.topViewController()
+            let nav1 = UINavigationController()
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let startViewController: StartViewController = mainStoryboard.instantiateViewController(withIdentifier: "StartViewController") as! StartViewController
+            nav1.viewControllers = [startViewController]
+            
+            UIView.transition(from: (oldViewController?.view)!, to: startViewController.view, duration: 0.65, options: .transitionCrossDissolve) { (finished) in
+                self.window?.rootViewController = nav1
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -90,4 +151,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
+}
