@@ -45,6 +45,7 @@
 		A95306CE1EF660F10040C43C /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306CD1EF660F10040C43C /* FirebaseProvider.swift */; };
 		A95306D11EF667B60040C43C /* CadastrarUsuarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */; };
 		A95306D31EF667C90040C43C /* CadastrarUsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */; };
+		A9B81D951F50DCAA00FAE3DA /* XMLParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B81D941F50DCA900FAE3DA /* XMLParserHelper.swift */; };
 		A9F6DBE71EE4C22C00E497CE /* AtivarMDMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBE61EE4C22C00E497CE /* AtivarMDMViewController.swift */; };
 		A9F6DBE91EE4F22A00E497CE /* NavegadorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBE81EE4F22A00E497CE /* NavegadorCoordinator.swift */; };
 		A9F6DBEC1EE506F400E497CE /* TelaCarregarBloqueante.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBEB1EE506F400E497CE /* TelaCarregarBloqueante.swift */; };
@@ -130,6 +131,7 @@
 		A95306CD1EF660F10040C43C /* FirebaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseProvider.swift; path = Providers/FirebaseProvider.swift; sourceTree = "<group>"; };
 		A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioViewModel.swift; path = Login/CadastrarUsuarioViewModel.swift; sourceTree = "<group>"; };
 		A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioModel.swift; path = Login/CadastrarUsuarioModel.swift; sourceTree = "<group>"; };
+		A9B81D941F50DCA900FAE3DA /* XMLParserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLParserHelper.swift; path = Navegador/XMLParserHelper.swift; sourceTree = "<group>"; };
 		A9F6DBE61EE4C22C00E497CE /* AtivarMDMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtivarMDMViewController.swift; path = Ativacao/AtivarMDMViewController.swift; sourceTree = "<group>"; };
 		A9F6DBE81EE4F22A00E497CE /* NavegadorCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavegadorCoordinator.swift; path = Navegador/NavegadorCoordinator.swift; sourceTree = "<group>"; };
 		A9F6DBEB1EE506F400E497CE /* TelaCarregarBloqueante.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TelaCarregarBloqueante.swift; path = "Telas de ação/TelaCarregarBloqueante.swift"; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				A904176C1EC5AE63005E6505 /* NavegadorViewController.swift */,
 				A9F6DBE81EE4F22A00E497CE /* NavegadorCoordinator.swift */,
+				A9B81D941F50DCA900FAE3DA /* XMLParserHelper.swift */,
 			);
 			name = Navegador;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				A904172B1EC58EE2005E6505 /* ViewController.swift in Sources */,
 				A9F6DC2B1EEACF3A00E497CE /* NotificacoesConfiguracoesViewController.swift in Sources */,
 				A9F6DC1E1EEAAADB00E497CE /* ExcecoesViewController.swift in Sources */,
+				A9B81D951F50DCAA00FAE3DA /* XMLParserHelper.swift in Sources */,
 				A92492641EF8F69400FECD7D /* ConfiguracoesModel.swift in Sources */,
 				A92492571EF755D200FECD7D /* AlertasProvider.swift in Sources */,
 				A9F6DC311EEF617800E497CE /* TemasModel.swift in Sources */,

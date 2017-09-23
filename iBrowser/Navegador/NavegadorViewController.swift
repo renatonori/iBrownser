@@ -8,7 +8,10 @@
 
 import UIKit
 import PKHUD
-class NavegadorViewController: UIViewController,UITextFieldDelegate,UIWebViewDelegate{
+import Alamofire
+import Kanna
+
+class NavegadorViewController: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var cancelSearchButton: UIButton!
@@ -35,65 +38,77 @@ class NavegadorViewController: UIViewController,UITextFieldDelegate,UIWebViewDel
         
 
         self.buscarSiteTextField.text = "https://www.uol.com.br"
+
+        Alamofire.request("https://www.xvideos.com/").responseString { response in
+            //print("\(response.result.isSuccess)")
+            if let html = response.result.value {
+                self.parseHTML(html)
+            }
+        }
         
-        let url = URL (string: "https://www.uol.com.br");
-        let requestObj = URLRequest(url: url!)
-        webView.loadRequest(requestObj)
+//        let url = URL (string: "https://www.uol.com.br");
+//        let requestObj = URLRequest(url: url!)
+//        webView.loadRequest(requestObj)
         
     }
+    func parseHTML(_ html:String){
+        let result = HTML(html: html, encoding: .utf8)
+        var allArrayOfString:Array<Array<String>> = []
+        if (result != nil){
+            if let teste = result?.css("a,link"){
+                for link in teste{
+                    if let palavras = link.text, palavras != ""{
+                        let arrayDePalavras = palavras.components(separatedBy:" ")
+                        if arrayDePalavras.count>1{
+                            var arrayPalavraAux:Array<String> = []
+                            for palavra in arrayDePalavras{
+                                if !palavra.isEmpty, palavra != ""{
+                                    arrayPalavraAux.append(palavra)
+                                }
+                            }
+                            allArrayOfString.append(arrayDePalavras)
+                        }
+                    }
+                    
+                }
+            }
+        }
+        for arrayDePalavras in allArrayOfString{
+            print(arrayDePalavras)
+        }
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         layoutBotaoCancelar()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         fazerBuscarDoSite(textField.text != nil ? textField.text! : "")
         return true
     }
     
     func loadRequest(_ url:String!){
-        if(!url.hasPrefix("http://") && !url.hasPrefix("https://")){
-            let teste = "https://" + url
-            let newUrl = URL (string: teste);
-            let requestObj = URLRequest(url: newUrl!)
-            webView.loadRequest(requestObj)
-        }else{
-            let newUrl = URL (string: url);
-            let requestObj = URLRequest(url: newUrl!)
-            webView.loadRequest(requestObj)
+        let url = URL(string: "")!
+        XMLParserHelper.sharedInstance.parseWebSiteWithURL(url) { teste in
+            
         }
+//        if(!url.hasPrefix("http://") && !url.hasPrefix("https://")){
+//            let teste = "https://" + url
+//            let newUrl = URL (string: teste);
+//            let requestObj = URLRequest(url: newUrl!)
+//            webView.loadRequest(requestObj)
+//        }else{
+//            let newUrl = URL (string: url);
+//            let requestObj = URLRequest(url: newUrl!)
+//            webView.loadRequest(requestObj)
+//        }
     }
     func getRestricoes(){
         FirebaseDatabaseProvider.sharedInstance.getRestricoes(UserDefaultsProvider.getDispID()!, UserDefaultsProvider.getGerenteID()!) { (array) in
             self.restricoesArray = array
         }
     }
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        getRestricoes()
-        let requestString = request.description
-        for req in restricoesArray{
-            if requestString == req{
-                HUD.flash(.labeledError(title: "Acesso Negado", subtitle: "Site na lista de restrições"), delay: 0.5)
-                return false
-            }
-        }
-        
-        return true
-    }
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        let request = webView.request?.url?.absoluteString
-        if !(request?.isEmpty)! && buscarSiteTextField.text != request!{
-            buscarSiteTextField.text = request!
-        }
-    }
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        let teste = self.buscarSiteTextField.text
-        let stringDeBusca = "https://www.google.com.br/#q=" + teste!
-        let url = URL (string: stringDeBusca);
-        let requestObj = URLRequest(url: url!)
-        webView.loadRequest(requestObj)
-    }
-    func webViewDidFinishLoad(_ webView: UIWebView) {
 
-    }
     func fazerBuscarDoSite(_ text:String){
         layoutBotaoCancelar()
         if !text.isEmpty{
@@ -127,4 +142,37 @@ class NavegadorViewController: UIViewController,UITextFieldDelegate,UIWebViewDel
     }
     */
 
+}
+extension NavegadorViewController:UIWebViewDelegate{
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        getRestricoes()
+        let requestString = request.description
+        for req in restricoesArray{
+            if requestString == req{
+                HUD.flash(.labeledError(title: "Acesso Negado", subtitle: "Site na lista de restrições"), delay: 0.5)
+                return false
+            }
+        }
+        
+        return true
+    }
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        let request = webView.request?.url?.absoluteString
+        if !(request?.isEmpty)! && buscarSiteTextField.text != request!{
+            buscarSiteTextField.text = request!
+        }
+    }
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        let teste = self.buscarSiteTextField.text
+        let stringDeBusca = "https://www.google.com.br/#q=" + teste!
+        let url = URL (string: stringDeBusca);
+        let requestObj = URLRequest(url: url!)
+        webView.loadRequest(requestObj)
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        let html = webView.stringByEvaluatingJavaScript(from: "document.body.innerHTML")
+        if let teste = html{
+            print(teste)
+        }
+    }
 }

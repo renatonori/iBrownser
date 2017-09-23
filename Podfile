@@ -11,6 +11,8 @@ target 'iBrowser' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'PKHUD', '~> 4.0'
+  pod 'Kanna', '~> 2.1.0'
+  pod 'Alamofire', '~> 4.4'
   
   target 'iBrowserTests' do
     inherit! :search_paths
