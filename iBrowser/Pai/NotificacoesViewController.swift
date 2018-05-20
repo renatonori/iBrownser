@@ -11,6 +11,8 @@ import UIKit
 class NotificacoesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var notificacoesTableView: UITableView!
+    var arrayRest:Array<String> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColors.backgroundColor()
@@ -38,18 +40,19 @@ class NotificacoesViewController: UIViewController,UITableViewDelegate,UITableVi
         cell.layer.borderWidth = 3
         return cell
     }
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        var moreRowAction = UITableViewRowAction(style: .default, title: "Adc. Exceção", handler:{action, indexpath in
+//        var moreRowAction = UITableViewRowAction(style: .default, title: "Adc. Exceção", handler:{action, indexpath in
+//
+//        });
+//        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        let deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
             
         });
-        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
-        var deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
-            
-        });
-        
-        return [deleteRowAction, moreRowAction];
+        return [deleteRowAction];
     }
     /*
     // MARK: - Navigation

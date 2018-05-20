@@ -23,18 +23,5 @@ class DispositivoCoordinator: NSObject {
             }
         }
     }
-    static func pushAdicionarRestricoesViewController(navigationController:UINavigationController?){
-        if let viewController = UIStoryboard(name: AppConstants.mainStoryboard, bundle: nil).instantiateViewController(withIdentifier: AdicionarRestricoesViewControllerName) as? AdicionarRestricoesViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
-        }
-    }
-    static func pushAdicionarExcecoesViewController(navigationController:UINavigationController?){
-        if let viewController = UIStoryboard(name: AppConstants.mainStoryboard, bundle: nil).instantiateViewController(withIdentifier: AdicionarExcecoesViewControllerName) as? AdicionarExcecoesViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
-        }
-    }
+
 }

@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         FirebaseProvider.sharedInstance.configurarFirebase()
         
         if FirebaseProvider.sharedInstance.usuarioLogado(){
@@ -28,15 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 comecarNoNavegador()
             }else{
                 comecarNoLogin()
-                
             }
-            
         }
-        
-        
-    
         return true
     }
+
     func comecarNoNavegador(){
         self.window = UIWindow(frame: UIScreen.main.bounds)
         

@@ -42,29 +42,36 @@
 		A92492621EF8F5A500FECD7D /* ConfiguracoesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92492611EF8F5A500FECD7D /* ConfiguracoesViewModel.swift */; };
 		A92492641EF8F69400FECD7D /* ConfiguracoesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92492631EF8F69400FECD7D /* ConfiguracoesModel.swift */; };
 		A92492671EFA5F2E00FECD7D /* RecuperarSenhaModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92492661EFA5F2E00FECD7D /* RecuperarSenhaModelView.swift */; };
+		A92FD383208E92FC0005506C /* ExcecaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD382208E92FC0005506C /* ExcecaoModel.swift */; };
+		A92FD385208ED1310005506C /* NoticacaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD384208ED1310005506C /* NoticacaoModel.swift */; };
+		A92FD388208ED40E0005506C /* BloquearConteudoAdultoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD387208ED40E0005506C /* BloquearConteudoAdultoViewController.swift */; };
+		A92FD39B20966E650005506C /* AvaliadorDeSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD39A20966E650005506C /* AvaliadorDeSite.swift */; };
+		A92FD39D2096810F0005506C /* NaiveBayesClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD39C2096810F0005506C /* NaiveBayesClassifier.swift */; };
+		A92FD39F209681850005506C /* NudityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD39E209681850005506C /* NudityClassifier.swift */; };
+		A92FD3A32098A88C0005506C /* UIImage+PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD3A22098A88C0005506C /* UIImage+PixelBuffer.swift */; };
+		A92FD3A52098A8940005506C /* Nudity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A92FD3A42098A8940005506C /* Nudity.mlmodel */; };
 		A95306CE1EF660F10040C43C /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306CD1EF660F10040C43C /* FirebaseProvider.swift */; };
 		A95306D11EF667B60040C43C /* CadastrarUsuarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */; };
 		A95306D31EF667C90040C43C /* CadastrarUsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */; };
+		A98AED4D20841D9500D119B6 /* RestricaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED4C20841D9500D119B6 /* RestricaoModel.swift */; };
+		A98AED4F20841EA100D119B6 /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED4E20841EA100D119B6 /* GeneralModel.swift */; };
+		A98AED51208587A000D119B6 /* RestricoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED50208587A000D119B6 /* RestricoesTableViewController.swift */; };
+		A98AED5320858F5C00D119B6 /* ExcecoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED5220858F5C00D119B6 /* ExcecoesTableViewController.swift */; };
+		A9989F7B2099654600DE9DB0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9989F7A2099654500DE9DB0 /* AdSupport.framework */; };
 		A9B81D951F50DCAA00FAE3DA /* XMLParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B81D941F50DCA900FAE3DA /* XMLParserHelper.swift */; };
 		A9F6DBE71EE4C22C00E497CE /* AtivarMDMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBE61EE4C22C00E497CE /* AtivarMDMViewController.swift */; };
 		A9F6DBE91EE4F22A00E497CE /* NavegadorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBE81EE4F22A00E497CE /* NavegadorCoordinator.swift */; };
 		A9F6DBEC1EE506F400E497CE /* TelaCarregarBloqueante.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DBEB1EE506F400E497CE /* TelaCarregarBloqueante.swift */; };
 		A9F6DC181EE9291500E497CE /* AdicionarDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC171EE9291500E497CE /* AdicionarDeviceViewController.swift */; };
-		A9F6DC1A1EEA8AEF00E497CE /* RestricoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC191EEA8AEF00E497CE /* RestricoesViewController.swift */; };
-		A9F6DC1C1EEA91CE00E497CE /* AdicionarRestricoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC1B1EEA91CE00E497CE /* AdicionarRestricoesViewController.swift */; };
-		A9F6DC1E1EEAAADB00E497CE /* ExcecoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC1D1EEAAADB00E497CE /* ExcecoesViewController.swift */; };
 		A9F6DC201EEAAAE600E497CE /* NotificacoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC1F1EEAAAE600E497CE /* NotificacoesViewController.swift */; };
 		A9F6DC231EEAABDF00E497CE /* ConfiguracoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC221EEAABDF00E497CE /* ConfiguracoesViewController.swift */; };
-		A9F6DC251EEAAE7700E497CE /* AdicionarExcecoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC241EEAAE7700E497CE /* AdicionarExcecoesViewController.swift */; };
-		A9F6DC271EEAB71600E497CE /* TemasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC261EEAB71600E497CE /* TemasViewController.swift */; };
-		A9F6DC291EEAB82800E497CE /* TemasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC281EEAB82800E497CE /* TemasCollectionViewCell.swift */; };
 		A9F6DC2B1EEACF3A00E497CE /* NotificacoesConfiguracoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC2A1EEACF3A00E497CE /* NotificacoesConfiguracoesViewController.swift */; };
 		A9F6DC2D1EEACF6700E497CE /* EditarPerfilConfiguracoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC2C1EEACF6700E497CE /* EditarPerfilConfiguracoesViewController.swift */; };
-		A9F6DC2F1EEF616B00E497CE /* TemasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC2E1EEF616B00E497CE /* TemasViewModel.swift */; };
-		A9F6DC311EEF617800E497CE /* TemasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC301EEF617800E497CE /* TemasModel.swift */; };
 		A9F6DC331EF0FFD700E497CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9F6DC321EF0FFD700E497CE /* GoogleService-Info.plist */; };
 		A9F6DC3C1EF306E200E497CE /* DispositivosTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC3B1EF306E200E497CE /* DispositivosTabBarViewController.swift */; };
 		A9F6DC3E1EF309E400E497CE /* DispositivoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6DC3D1EF309E400E497CE /* DispositivoCoordinator.swift */; };
+		A9F9416E20A1710D00A57F02 /* NaiveBayesClassifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9416D20A1710D00A57F02 /* NaiveBayesClassifierModel.swift */; };
+		A9F9417B20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9417A20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,29 +135,36 @@
 		A92492611EF8F5A500FECD7D /* ConfiguracoesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracoesViewModel.swift; sourceTree = "<group>"; };
 		A92492631EF8F69400FECD7D /* ConfiguracoesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracoesModel.swift; sourceTree = "<group>"; };
 		A92492661EFA5F2E00FECD7D /* RecuperarSenhaModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecuperarSenhaModelView.swift; sourceTree = "<group>"; };
+		A92FD382208E92FC0005506C /* ExcecaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcecaoModel.swift; sourceTree = "<group>"; };
+		A92FD384208ED1310005506C /* NoticacaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticacaoModel.swift; sourceTree = "<group>"; };
+		A92FD387208ED40E0005506C /* BloquearConteudoAdultoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloquearConteudoAdultoViewController.swift; sourceTree = "<group>"; };
+		A92FD39A20966E650005506C /* AvaliadorDeSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliadorDeSite.swift; sourceTree = "<group>"; };
+		A92FD39C2096810F0005506C /* NaiveBayesClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesClassifier.swift; sourceTree = "<group>"; };
+		A92FD39E209681850005506C /* NudityClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NudityClassifier.swift; sourceTree = "<group>"; };
+		A92FD3A22098A88C0005506C /* UIImage+PixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+PixelBuffer.swift"; sourceTree = "<group>"; };
+		A92FD3A42098A8940005506C /* Nudity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Nudity.mlmodel; sourceTree = "<group>"; };
 		A95306CD1EF660F10040C43C /* FirebaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseProvider.swift; path = Providers/FirebaseProvider.swift; sourceTree = "<group>"; };
 		A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioViewModel.swift; path = Login/CadastrarUsuarioViewModel.swift; sourceTree = "<group>"; };
 		A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioModel.swift; path = Login/CadastrarUsuarioModel.swift; sourceTree = "<group>"; };
+		A98AED4C20841D9500D119B6 /* RestricaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestricaoModel.swift; sourceTree = "<group>"; };
+		A98AED4E20841EA100D119B6 /* GeneralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
+		A98AED50208587A000D119B6 /* RestricoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestricoesTableViewController.swift; sourceTree = "<group>"; };
+		A98AED5220858F5C00D119B6 /* ExcecoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcecoesTableViewController.swift; sourceTree = "<group>"; };
+		A9989F7A2099654500DE9DB0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A9B81D941F50DCA900FAE3DA /* XMLParserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLParserHelper.swift; path = Navegador/XMLParserHelper.swift; sourceTree = "<group>"; };
 		A9F6DBE61EE4C22C00E497CE /* AtivarMDMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtivarMDMViewController.swift; path = Ativacao/AtivarMDMViewController.swift; sourceTree = "<group>"; };
 		A9F6DBE81EE4F22A00E497CE /* NavegadorCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavegadorCoordinator.swift; path = Navegador/NavegadorCoordinator.swift; sourceTree = "<group>"; };
 		A9F6DBEB1EE506F400E497CE /* TelaCarregarBloqueante.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TelaCarregarBloqueante.swift; path = "Telas de ação/TelaCarregarBloqueante.swift"; sourceTree = "<group>"; };
 		A9F6DC171EE9291500E497CE /* AdicionarDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdicionarDeviceViewController.swift; path = "Adicionar Device/AdicionarDeviceViewController.swift"; sourceTree = "<group>"; };
-		A9F6DC191EEA8AEF00E497CE /* RestricoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestricoesViewController.swift; path = Pai/RestricoesViewController.swift; sourceTree = "<group>"; };
-		A9F6DC1B1EEA91CE00E497CE /* AdicionarRestricoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdicionarRestricoesViewController.swift; path = Pai/AdicionarRestricoesViewController.swift; sourceTree = "<group>"; };
-		A9F6DC1D1EEAAADB00E497CE /* ExcecoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExcecoesViewController.swift; path = Pai/ExcecoesViewController.swift; sourceTree = "<group>"; };
 		A9F6DC1F1EEAAAE600E497CE /* NotificacoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificacoesViewController.swift; path = Pai/NotificacoesViewController.swift; sourceTree = "<group>"; };
 		A9F6DC221EEAABDF00E497CE /* ConfiguracoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfiguracoesViewController.swift; path = Pai/ConfiguracoesViewController.swift; sourceTree = "<group>"; };
-		A9F6DC241EEAAE7700E497CE /* AdicionarExcecoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdicionarExcecoesViewController.swift; path = Pai/AdicionarExcecoesViewController.swift; sourceTree = "<group>"; };
-		A9F6DC261EEAB71600E497CE /* TemasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TemasViewController.swift; path = Pai/TemasViewController.swift; sourceTree = "<group>"; };
-		A9F6DC281EEAB82800E497CE /* TemasCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TemasCollectionViewCell.swift; path = Pai/TemasCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9F6DC2A1EEACF3A00E497CE /* NotificacoesConfiguracoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificacoesConfiguracoesViewController.swift; path = "Pai/Configurações/NotificacoesConfiguracoesViewController.swift"; sourceTree = "<group>"; };
 		A9F6DC2C1EEACF6700E497CE /* EditarPerfilConfiguracoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditarPerfilConfiguracoesViewController.swift; path = "Pai/Configurações/EditarPerfilConfiguracoesViewController.swift"; sourceTree = "<group>"; };
-		A9F6DC2E1EEF616B00E497CE /* TemasViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TemasViewModel.swift; path = Pai/TemasViewModel.swift; sourceTree = "<group>"; };
-		A9F6DC301EEF617800E497CE /* TemasModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TemasModel.swift; path = Pai/TemasModel.swift; sourceTree = "<group>"; };
 		A9F6DC321EF0FFD700E497CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9F6DC3B1EF306E200E497CE /* DispositivosTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DispositivosTabBarViewController.swift; path = Dispositivos/DispositivosTabBarViewController.swift; sourceTree = "<group>"; };
 		A9F6DC3D1EF309E400E497CE /* DispositivoCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DispositivoCoordinator.swift; path = Dispositivos/DispositivoCoordinator.swift; sourceTree = "<group>"; };
+		A9F9416D20A1710D00A57F02 /* NaiveBayesClassifierModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesClassifierModel.swift; sourceTree = "<group>"; };
+		A9F9417A20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesClassifierRequest.swift; sourceTree = "<group>"; };
 		B19CF7286C4DA9AF32B23780 /* Pods-iBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iBrowser/Pods-iBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		C1D5D809650BB1E2C6A8F169 /* Pods-iBrowserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBrowserTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iBrowserTests/Pods-iBrowserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C43EAED5BA03A3A03C53190D /* Pods_iBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9989F7B2099654600DE9DB0 /* AdSupport.framework in Frameworks */,
 				510D2C5485FD2C4E19689527 /* Pods_iBrowser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +216,7 @@
 		997340E5CB447551AE87500B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9989F7A2099654500DE9DB0 /* AdSupport.framework */,
 				C43EAED5BA03A3A03C53190D /* Pods_iBrowser.framework */,
 				ED90DA01703319F01F996C8E /* Pods_iBrowserTests.framework */,
 				4FCDB8BC48BFE40506F614A3 /* Pods_iBrowserUITests.framework */,
@@ -308,38 +324,28 @@
 		A904176E1EC5B1E5005E6505 /* Pai */ = {
 			isa = PBXGroup;
 			children = (
+				A92FD386208ED3E30005506C /* Bloquear */,
 				A9F6DC211EEAAB4800E497CE /* Configurações */,
 				A9F6DC161EE928DD00E497CE /* Adicionar Dispositivo */,
 				A90417831ED4FF3E005E6505 /* Exceções */,
 				A90417821ED4FF26005E6505 /* Notificações */,
 				A90417801ED4FEF6005E6505 /* Restriçoes */,
-				A904177F1ED4FEEE005E6505 /* Temas */,
 				A90417711EC5B637005E6505 /* PaiCoordinator.swift */,
 				A90417861ED642C2005E6505 /* DispositivosPaiViewController.swift */,
 				A90417731EC5B64D005E6505 /* PaiModel.swift */,
 				A90417751EC5B65B005E6505 /* PaiViewModel.swift */,
 				A904177D1EC5DEBA005E6505 /* PaiTableViewCell.swift */,
 				A90417841ED50254005E6505 /* PaiTabBarViewController.swift */,
+				A98AED4E20841EA100D119B6 /* GeneralModel.swift */,
 			);
 			name = Pai;
-			sourceTree = "<group>";
-		};
-		A904177F1ED4FEEE005E6505 /* Temas */ = {
-			isa = PBXGroup;
-			children = (
-				A9F6DC261EEAB71600E497CE /* TemasViewController.swift */,
-				A9F6DC281EEAB82800E497CE /* TemasCollectionViewCell.swift */,
-				A9F6DC2E1EEF616B00E497CE /* TemasViewModel.swift */,
-				A9F6DC301EEF617800E497CE /* TemasModel.swift */,
-			);
-			name = Temas;
 			sourceTree = "<group>";
 		};
 		A90417801ED4FEF6005E6505 /* Restriçoes */ = {
 			isa = PBXGroup;
 			children = (
-				A9F6DC191EEA8AEF00E497CE /* RestricoesViewController.swift */,
-				A9F6DC1B1EEA91CE00E497CE /* AdicionarRestricoesViewController.swift */,
+				A98AED4C20841D9500D119B6 /* RestricaoModel.swift */,
+				A98AED50208587A000D119B6 /* RestricoesTableViewController.swift */,
 			);
 			name = "Restriçoes";
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				A9F6DC1F1EEAAAE600E497CE /* NotificacoesViewController.swift */,
+				A92FD384208ED1310005506C /* NoticacaoModel.swift */,
 			);
 			name = "Notificações";
 			sourceTree = "<group>";
@@ -355,8 +362,8 @@
 		A90417831ED4FF3E005E6505 /* Exceções */ = {
 			isa = PBXGroup;
 			children = (
-				A9F6DC1D1EEAAADB00E497CE /* ExcecoesViewController.swift */,
-				A9F6DC241EEAAE7700E497CE /* AdicionarExcecoesViewController.swift */,
+				A98AED5220858F5C00D119B6 /* ExcecoesTableViewController.swift */,
+				A92FD382208E92FC0005506C /* ExcecaoModel.swift */,
 			);
 			name = "Exceções";
 			sourceTree = "<group>";
@@ -370,14 +377,45 @@
 			name = "Recuperar Senha";
 			sourceTree = "<group>";
 		};
+		A92FD386208ED3E30005506C /* Bloquear */ = {
+			isa = PBXGroup;
+			children = (
+				A92FD387208ED40E0005506C /* BloquearConteudoAdultoViewController.swift */,
+			);
+			name = Bloquear;
+			sourceTree = "<group>";
+		};
+		A92FD3A0209682F60005506C /* Classificador de imagem */ = {
+			isa = PBXGroup;
+			children = (
+				A92FD3A42098A8940005506C /* Nudity.mlmodel */,
+				A92FD3A22098A88C0005506C /* UIImage+PixelBuffer.swift */,
+				A92FD39E209681850005506C /* NudityClassifier.swift */,
+			);
+			name = "Classificador de imagem";
+			sourceTree = "<group>";
+		};
+		A92FD3A12096830A0005506C /* Classificador de texto */ = {
+			isa = PBXGroup;
+			children = (
+				A92FD39C2096810F0005506C /* NaiveBayesClassifier.swift */,
+				A9F9416D20A1710D00A57F02 /* NaiveBayesClassifierModel.swift */,
+				A9F9417A20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift */,
+			);
+			name = "Classificador de texto";
+			sourceTree = "<group>";
+		};
 		A95306CC1EF660C90040C43C /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				A92FD3A12096830A0005506C /* Classificador de texto */,
+				A92FD3A0209682F60005506C /* Classificador de imagem */,
 				A92492561EF755D200FECD7D /* AlertasProvider.swift */,
 				A95306CD1EF660F10040C43C /* FirebaseProvider.swift */,
 				A92492581EF75A1E00FECD7D /* TextosProvider.swift */,
 				A924925A1EF75BF100FECD7D /* FirebaseDatabaseProvider.swift */,
 				A924925C1EF7647C00FECD7D /* UserDefaultsProvider.swift */,
+				A92FD39A20966E650005506C /* AvaliadorDeSite.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -441,7 +479,6 @@
 				A90417221EC58EE2005E6505 /* Frameworks */,
 				A90417231EC58EE2005E6505 /* Resources */,
 				7B9C0077F157830A0A3132BF /* [CP] Embed Pods Frameworks */,
-				501D62E130413BBE296FE1A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -460,8 +497,6 @@
 				A90417381EC58EE2005E6505 /* Sources */,
 				A90417391EC58EE2005E6505 /* Frameworks */,
 				A904173A1EC58EE2005E6505 /* Resources */,
-				16F6BDD3AE7FF45342CFB3F8 /* [CP] Embed Pods Frameworks */,
-				49F8A15E78C103853C9E5148 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -481,8 +516,6 @@
 				A90417431EC58EE2005E6505 /* Sources */,
 				A90417441EC58EE2005E6505 /* Frameworks */,
 				A90417451EC58EE2005E6505 /* Resources */,
-				AB11BB7A0C7732E0A5FFBDFB /* [CP] Embed Pods Frameworks */,
-				B1653491D4787992BF49FAF3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -501,7 +534,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Renato Ioshida";
 				TargetAttributes = {
 					A90417241EC58EE2005E6505 = {
@@ -570,34 +603,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16F6BDD3AE7FF45342CFB3F8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowserTests/Pods-iBrowserTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		283EBCADAC604EF90A18ACDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iBrowserUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37BBCC24F70A82897E89C59B /* [CP] Check Pods Manifest.lock */ = {
@@ -606,43 +627,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iBrowser-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		49F8A15E78C103853C9E5148 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowserTests/Pods-iBrowserTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		501D62E130413BBE296FE1A8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowser/Pods-iBrowser-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7B9C0077F157830A0A3132BF /* [CP] Embed Pods Frameworks */ = {
@@ -651,28 +645,30 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iBrowser/Pods-iBrowser-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowser/Pods-iBrowser-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB11BB7A0C7732E0A5FFBDFB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowserUITests/Pods-iBrowserUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B10E6760D37388857C4A4BCB /* [CP] Check Pods Manifest.lock */ = {
@@ -681,28 +677,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iBrowserTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B1653491D4787992BF49FAF3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBrowserUITests/Pods-iBrowserUITests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -713,41 +697,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90417781EC5BF00005E6505 /* StartCoordinatior.swift in Sources */,
-				A9F6DC271EEAB71600E497CE /* TemasViewController.swift in Sources */,
 				A904177C1EC5D5A8005E6505 /* LoginCoordinatior.swift in Sources */,
 				A92492621EF8F5A500FECD7D /* ConfiguracoesViewModel.swift in Sources */,
+				A92FD39B20966E650005506C /* AvaliadorDeSite.swift in Sources */,
 				A90417871ED642C2005E6505 /* DispositivosPaiViewController.swift in Sources */,
+				A92FD385208ED1310005506C /* NoticacaoModel.swift in Sources */,
 				A904177E1EC5DEBA005E6505 /* PaiTableViewCell.swift in Sources */,
+				A92FD3A52098A8940005506C /* Nudity.mlmodel in Sources */,
 				A904172B1EC58EE2005E6505 /* ViewController.swift in Sources */,
 				A9F6DC2B1EEACF3A00E497CE /* NotificacoesConfiguracoesViewController.swift in Sources */,
-				A9F6DC1E1EEAAADB00E497CE /* ExcecoesViewController.swift in Sources */,
+				A92FD39D2096810F0005506C /* NaiveBayesClassifier.swift in Sources */,
 				A9B81D951F50DCAA00FAE3DA /* XMLParserHelper.swift in Sources */,
+				A92FD39F209681850005506C /* NudityClassifier.swift in Sources */,
 				A92492641EF8F69400FECD7D /* ConfiguracoesModel.swift in Sources */,
 				A92492571EF755D200FECD7D /* AlertasProvider.swift in Sources */,
-				A9F6DC311EEF617800E497CE /* TemasModel.swift in Sources */,
 				A95306CE1EF660F10040C43C /* FirebaseProvider.swift in Sources */,
 				A90417671EC5AD05005E6505 /* StartViewController.swift in Sources */,
 				A904177A1EC5D546005E6505 /* RecuperarSenhaViewController.swift in Sources */,
 				A9F6DC181EE9291500E497CE /* AdicionarDeviceViewController.swift in Sources */,
-				A9F6DC2F1EEF616B00E497CE /* TemasViewModel.swift in Sources */,
 				A9F6DC231EEAABDF00E497CE /* ConfiguracoesViewController.swift in Sources */,
 				A90417311EC58EE2005E6505 /* iBrowser.xcdatamodeld in Sources */,
-				A9F6DC251EEAAE7700E497CE /* AdicionarExcecoesViewController.swift in Sources */,
+				A98AED4F20841EA100D119B6 /* GeneralModel.swift in Sources */,
 				A9F6DBE71EE4C22C00E497CE /* AtivarMDMViewController.swift in Sources */,
 				A90417631EC5AC74005E6505 /* CadastrarViewController.swift in Sources */,
 				A9F6DC2D1EEACF6700E497CE /* EditarPerfilConfiguracoesViewController.swift in Sources */,
 				A95306D31EF667C90040C43C /* CadastrarUsuarioModel.swift in Sources */,
-				A9F6DC291EEAB82800E497CE /* TemasCollectionViewCell.swift in Sources */,
-				A9F6DC1A1EEA8AEF00E497CE /* RestricoesViewController.swift in Sources */,
 				A95306D11EF667B60040C43C /* CadastrarUsuarioViewModel.swift in Sources */,
 				A92492591EF75A1E00FECD7D /* TextosProvider.swift in Sources */,
 				A90417761EC5B65B005E6505 /* PaiViewModel.swift in Sources */,
+				A92FD3A32098A88C0005506C /* UIImage+PixelBuffer.swift in Sources */,
 				A9F6DC3E1EF309E400E497CE /* DispositivoCoordinator.swift in Sources */,
+				A98AED5320858F5C00D119B6 /* ExcecoesTableViewController.swift in Sources */,
 				A9F6DBE91EE4F22A00E497CE /* NavegadorCoordinator.swift in Sources */,
+				A98AED51208587A000D119B6 /* RestricoesTableViewController.swift in Sources */,
 				A904176D1EC5AE63005E6505 /* NavegadorViewController.swift in Sources */,
 				A90417291EC58EE2005E6505 /* AppDelegate.swift in Sources */,
-				A9F6DC1C1EEA91CE00E497CE /* AdicionarRestricoesViewController.swift in Sources */,
 				A90417651EC5ACCE005E6505 /* LoginViewController.swift in Sources */,
+				A9F9417B20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift in Sources */,
 				A904175C1EC595B7005E6505 /* AppColors.swift in Sources */,
 				A90417721EC5B637005E6505 /* PaiCoordinator.swift in Sources */,
 				A904175A1EC59575005E6505 /* AppConstants.swift in Sources */,
@@ -757,7 +743,11 @@
 				A904176A1EC5AD43005E6505 /* AtivarFilhoViewController.swift in Sources */,
 				A92492601EF7C79F00FECD7D /* StartViewModel.swift in Sources */,
 				A9F6DC201EEAAAE600E497CE /* NotificacoesViewController.swift in Sources */,
+				A92FD388208ED40E0005506C /* BloquearConteudoAdultoViewController.swift in Sources */,
 				A92492671EFA5F2E00FECD7D /* RecuperarSenhaModelView.swift in Sources */,
+				A92FD383208E92FC0005506C /* ExcecaoModel.swift in Sources */,
+				A98AED4D20841D9500D119B6 /* RestricaoModel.swift in Sources */,
+				A9F9416E20A1710D00A57F02 /* NaiveBayesClassifierModel.swift in Sources */,
 				A90417851ED50254005E6505 /* PaiTabBarViewController.swift in Sources */,
 				A924925B1EF75BF100FECD7D /* FirebaseDatabaseProvider.swift in Sources */,
 				A924925D1EF7647C00FECD7D /* UserDefaultsProvider.swift in Sources */,
@@ -825,15 +815,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -875,15 +873,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -914,7 +920,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q4FN3C72T2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(SDKROOT)/usr/include/libxml2/**",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+				);
 				INFOPLIST_FILE = iBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ioshida.iBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -928,7 +942,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q4FN3C72T2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(SDKROOT)/usr/include/libxml2/**",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+				);
 				INFOPLIST_FILE = iBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ioshida.iBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";

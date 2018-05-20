@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
+import FirebaseAuth
 
 typealias FirebaseProviderCallback = (Bool, String) -> Swift.Void
 class FirebaseProvider{
@@ -16,11 +17,25 @@ class FirebaseProvider{
     
     func configurarFirebase(){
         FirebaseApp.configure()
+        self.comecarDataBaseSecundario()
     }
     func usuarioLogado()->Bool{
         return Auth.auth().currentUser != nil
     }
-    
+    func comecarDataBaseSecundario(){
+        // Configure with manual options.
+        let secondaryOptions = FirebaseOptions(googleAppID: "1:444921685008:ios:b0f1f6ab799fb5f9", gcmSenderID: "444921685008")
+        secondaryOptions.bundleID = "ioshida.TrainGetter"
+        secondaryOptions.apiKey = "AIzaSyAWBewdBjF5g1UUY8u5-J4YfA_iKbMdTto"
+        secondaryOptions.clientID = "444921685008-0lr3du2tou8s8peqgp3gd2peqbmvvlqc.apps.googleusercontent.com"
+        secondaryOptions.databaseURL = "https://naivebayestrainer.firebaseio.com"
+        secondaryOptions.storageBucket = "naivebayestrainer.appspot.com"
+        
+        // Configure an alternative FIRApp.
+        FirebaseApp.configure(name: "secondary", options: secondaryOptions)
+        
+
+    }
     
     
     func adicionarObservadorDeAutenticacao(){

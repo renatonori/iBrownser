@@ -86,7 +86,7 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         let values = valor.components(separatedBy: ";")
         UserDefaultsProvider.setDispID(values[0])
         UserDefaultsProvider.setGerenteID(values[1])
-        FirebaseDatabaseProvider.sharedInstance.linkLido(UserDefaultsProvider.getDispID()!, UserDefaultsProvider.getGerenteID()!)
+        _ = FirebaseDatabaseProvider.sharedInstance.linkLido(UserDefaultsProvider.getDispID()!, UserDefaultsProvider.getGerenteID()!)
     }
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         // Check if the metadataObjects array is not nil and it contains at least one object.

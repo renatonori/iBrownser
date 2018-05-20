@@ -31,8 +31,9 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
-        dispositivosTableView.addSubview(refreshControl)
+        refreshControl.clipsToBounds = true
         
+        dispositivosTableView.insertSubview(refreshControl, at: 0)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +42,13 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         
         let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.adicionarDispositivo))
         self.tabBarController?.navigationItem.rightBarButtonItem = rightButton
-        dispositivosTableView.reloadData()
+        
+        self.refreshControl.beginRefreshing()
+        self.refresh(sender: self)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.refreshControl.beginRefreshing()
-        self.refresh(sender: self)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -61,9 +63,10 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         FirebaseDatabaseProvider.sharedInstance.getDevices { (dicionarios) in
             
             self.dispositivos = dicionarios
-            
-            self.refreshControl.endRefreshing()
-            self.dispositivosTableView.reloadData()
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.dispositivosTableView.reloadData()
+            }
         }
         
     }
@@ -85,8 +88,6 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         paiCell.dispositivo.text = disp.dispositivoNome
         paiCell.status.text = disp.status
         
-        paiCell.layer.borderColor = AppColors.backgroundColor().cgColor
-        paiCell.layer.borderWidth = 3
         if paiCell.status.text != "Registrado"{
             paiCell.status.textColor = UIColor.red
         }
@@ -99,8 +100,18 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         DispositivoCoordinator.pushDispositivosTabBarViewController(navigationController: navigationController,disp.nomeFilho, dispositivo: disp);
         FirebaseDatabaseProvider.sharedInstance.adicionarPai()
     }
+    func okayAlert(){
+        let okayAlertController = UIAlertController(title: "Complete antes de continuar", message: "", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: {
+            alert -> Void in
+            
+        })
+        okayAlertController.addAction(okayAction)
+        self.present(okayAlertController, animated: true, completion: nil)
+    }
+    
     func adicionarDispositivo(){
-        let alertController = UIAlertController(title: "Complete antes de continuar", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Complete Todos os campos", message: "", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Okay", style: .default, handler: {
             alert -> Void in
@@ -108,7 +119,16 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
             let firstTextField = alertController.textFields![0] as UITextField
             let secondTextField = alertController.textFields![1] as UITextField
             
-            PaiCoordinator.pushAdicionarDeviceViewController(nome: firstTextField.text ?? "", nomeDisp: secondTextField.text ?? "", navigationController: self.tabBarController?.navigationController)
+            guard let name = firstTextField.text, name != "" else{
+                self.okayAlert()
+                return
+            }
+            guard let nomeDisp = secondTextField.text, nomeDisp != "" else{
+                self.okayAlert()
+                return
+            }
+            
+            PaiCoordinator.pushAdicionarDeviceViewController(nome: name, nomeDisp: nomeDisp, navigationController: self.tabBarController?.navigationController)
         })
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
@@ -131,12 +151,12 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        var moreRowAction = UITableViewRowAction(style: .default, title: "Editar", handler:{action, indexpath in
+        let moreRowAction = UITableViewRowAction(style: .default, title: "Editar", handler:{action, indexpath in
             
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
-        var deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
             
         });
         

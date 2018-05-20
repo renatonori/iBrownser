@@ -84,37 +84,116 @@ class FirebaseDatabaseProvider: NSObject {
                 }
             })
         }
-        
+    }
+    func setBloquear(_ deviceID:String,_ bloquear:Bool){
+        if let uid = Auth.auth().currentUser?.uid{
+ self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").setValue(bloquear)
+        }
+    }
+    func getBloquearStatus(_ deviceID:String, completion:@escaping (Bool)->Void){
+       if let uid = Auth.auth().currentUser?.uid{
+        self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").observe(.value, with: { snapshot in
+            if(snapshot.exists()){
+                if let bloq = snapshot.value as? Bool{
+                    completion(bloq)
+                }else{
+                    completion(false)
+                }
+            }else{
+                completion(false)
+            }
+        })
+        }
     }
     
-    func adicionarRestricao(_ deviceID:String,_ gerenteID:String, _ link:String){
+    func adicionarExcecoes(_ deviceID:String,_ gerenteID:String, _ link:String){
         //referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).observe(.value, with: { snapshot in
-           // if(snapshot.exists()){
-                let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
-        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue(["link":"https://"+link])
-            //}
+        // if(snapshot.exists()){
+        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).setValue(["link":"https://"+link])
+        //}
         //})
         
     }
-    func getRestricoes(_ deviceID:String,_ gerenteID:String,completion:@escaping (_ devices:Array<String>)->Void){
-        
-            self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").observe(.value, with: { snapshot in
-                if(snapshot.exists()){
-                    if let teste = snapshot.value as? NSDictionary{
-                        var array:Array<String> = []
-                        for key in teste.allKeys{
-                            if let dict = teste.object(forKey: key) as? NSDictionary{
-                                let link = dict.value(forKey: "link") as? String ?? ""
-                                array.append(link)
-                            }
+    func getExcecoes(_ deviceID:String,_ gerenteID:String,completion:@escaping (_ devices:Array<ExcecaoModel>)->Void){
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").observe(.value, with: { snapshot in
+            if(snapshot.exists()){
+                if let teste = snapshot.value as? NSDictionary{
+                    var array:Array<ExcecaoModel> = []
+                    for key in teste.allKeys{
+                        if let keyExc = key as? String, let dict = teste.object(forKey: key) as? NSDictionary{
+                            let link = dict.value(forKey: "link") as? String ?? ""
+                            let excecao = ExcecaoModel()
+                            excecao.stringExcecao = link
+                            excecao.key = keyExc
+                            array.append(excecao)
                         }
-                        completion(array)
                     }
-                    
-                }else{
-                    
+                    completion(array)
                 }
+                
+            }else{
+                
+            }
+        })
+        
+    }
+    func adicionarRestricao(_ deviceID:String,_ gerenteID:String, _ link:String){
+        //referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).observe(.value, with: { snapshot in
+        // if(snapshot.exists()){
+        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue(["link":"https://"+link])
+        //}
+        //})
+        
+    }
+    func removerRestricao(_ userID:String, _ restrictionID:String){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("restricoes").child(restrictionID).setValue(nil)
+        }
+    }
+    func getBloqueio(_ userID:String, completion:@escaping (Bool)->Void){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("bloquear").observe(.value, with: { snapshot in
+                if snapshot.exists(){
+                    if let isActive = snapshot.value as? Bool{
+                        completion(isActive)
+                    }else{
+                        completion(false)
+                    }
+                }
+                
             })
-
+        }
+    }
+    func setBloqueio(_ userID:String, _ restrictionID:String, _ newValue:Bool){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("isActive").setValue(newValue)
+        }
+    }
+    func getRestricoes(_ deviceID:String,_ gerenteID:String,completion:@escaping (_ devices:Array<RestricaoModel>)->Void){
+        
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").observe(.value, with: { snapshot in
+            if(snapshot.exists()){
+                if let teste = snapshot.value as? NSDictionary{
+                    var array:Array<RestricaoModel> = []
+                    for key in teste.allKeys{
+                        if let keyString = key as? String,
+                            let dict = teste.object(forKey: key) as? NSDictionary{
+                            let link = dict.value(forKey: "link") as? String ?? ""
+                            let restricao = RestricaoModel()
+                            restricao.stringRestricao = link
+                            restricao.key = keyString
+                            array.append(restricao)
+                        }
+                    }
+                    completion(array)
+                }
+                
+            }else{
+                
+            }
+        })
+        
     }
 }

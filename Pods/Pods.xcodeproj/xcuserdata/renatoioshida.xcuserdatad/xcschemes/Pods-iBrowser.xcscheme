@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76D9A8A2206EB0F4ACA31B62A65C6553"
+               BlueprintIdentifier = "8A4FA364E6483FEBA7C3BBAFDECDF4EB"
                BuildableName = "Pods_iBrowser.framework"
                BlueprintName = "Pods-iBrowser"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "76D9A8A2206EB0F4ACA31B62A65C6553"
+            BlueprintIdentifier = "8A4FA364E6483FEBA7C3BBAFDECDF4EB"
             BuildableName = "Pods_iBrowser.framework"
             BlueprintName = "Pods-iBrowser"
             ReferencedContainer = "container:Pods.xcodeproj">
