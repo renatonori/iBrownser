@@ -15,6 +15,8 @@ class AdicionarDeviceViewController: UIViewController {
     var qrcodeImage: CIImage!
     weak var timer:Timer?
     
+    var qrCode:String!
+    
     var dispID:String = ""
     
     @IBOutlet weak var qrCodeImageView: UIImageView!
@@ -43,7 +45,9 @@ class AdicionarDeviceViewController: UIViewController {
     func verificarAntesDeSair(){
         FirebaseDatabaseProvider.sharedInstance.esperandoDispositivoFilhoLinkar(dispID) { (succes) in
             if !succes{
-                FirebaseDatabaseProvider.sharedInstance.removerFilho(self.dispID)
+                FirebaseDatabaseProvider.sharedInstance.removerFilho(self.dispID, completion: { _ in
+                    
+                })
             }
         }
     }
@@ -66,20 +70,22 @@ class AdicionarDeviceViewController: UIViewController {
     func gerarQRCode(){
         if qrcodeImage == nil {
             
-            let qrCode = FirebaseDatabaseProvider.sharedInstance.adicionarFilho(nome, nomeDispositivo)
-            dispID = qrCode.components(separatedBy: ";").first ?? ""
-            let data = qrCode.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+
+            
+            self.dispID = self.qrCode.components(separatedBy: ";").first ?? ""
+            let data = self.qrCode.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
             
             let filter = CIFilter(name: "CIQRCodeGenerator")
             
             filter?.setValue(data, forKey: "inputMessage")
             filter?.setValue("Q", forKey: "inputCorrectionLevel")
             
-            qrcodeImage = filter?.outputImage
+            self.qrcodeImage = filter?.outputImage
             
-            qrCodeImageView.image = UIImage(ciImage: qrcodeImage)
+            self.qrCodeImageView.image = UIImage(ciImage: self.qrcodeImage)
             
-            ativarTimeDeLeitura()
+            self.ativarTimeDeLeitura()
+
         }
     }
     /*

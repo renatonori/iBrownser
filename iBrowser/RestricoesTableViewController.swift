@@ -14,6 +14,14 @@ class RestricoesTableViewController: UITableViewController {
     
     var arrayRest:Array<RestricaoModel> = []
     
+    var dipositivoKey:String!{
+        get{
+            guard let tabController = self.tabBarController as? DispositivosTabBarViewController else{
+                return ""
+            }
+            return tabController.getKey()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +51,9 @@ class RestricoesTableViewController: UITableViewController {
         getRestricoes()
     }
     func getRestricoes(){
-        let teste = self.tabBarController as? DispositivosTabBarViewController
-        let value = teste?.getInfoDispositivo()
-        let dispID = value?.key
+
         self.tableView.refreshControl?.beginRefreshing()
-        FirebaseDatabaseProvider.sharedInstance.getRestricoes(dispID!, FirebaseDatabaseProvider.sharedInstance.getUserId()) { (array) in
+        FirebaseDatabaseProvider.sharedInstance.getRestricoes(self.dipositivoKey, FirebaseDatabaseProvider.sharedInstance.getUserId()) { (array) in
             self.tableView.refreshControl?.endRefreshing()
             self.arrayRest = array
             self.tableView.reloadData()
@@ -67,31 +73,14 @@ class RestricoesTableViewController: UITableViewController {
         
     }
     func adicionarNovaRestricao(){
-        let alertController = UIAlertController(title: "Complete para adicionar uma restrição!", message: "", preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Adicionar", style: .default, handler: {
-            alert -> Void in
-            
-            let firstTextField = alertController.textFields![0] as UITextField
-            let teste = self.tabBarController as? DispositivosTabBarViewController
-            let value = teste?.getInfoDispositivo()
-            let dispID = value?.key
-            FirebaseDatabaseProvider.sharedInstance.adicionarRestricao(dispID!,FirebaseDatabaseProvider.sharedInstance.getUserId() , firstTextField.text!)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Insira o link do site"
+        let controller = AdicionarEditarViewController.getInstance()
+        controller.tipoDaAcao = .restricao
+        controller.dipositivoKey = dipositivoKey
+        controller.isEdit = false
+        controller.dimissBlock = {
+            self.getRestricoes()
         }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -101,14 +90,30 @@ class RestricoesTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
+        let rest = arrayRest[indexPath.row]
         let moreRowAction = UITableViewRowAction(style: .default, title: "Editar", handler:{action, indexpath in
-            
+            let controller = AdicionarEditarViewController.getInstance()
+            controller.dipositivoKey = self.dipositivoKey
+            controller.tipoDaAcao = .restricao
+            controller.isEdit = true
+            controller.linkPlaceholder = rest.stringRestricao!
+            controller.restrictionKey = rest.key!
+            controller.dimissBlock = {
+                self.getRestricoes()
+            }
+            self.present(controller, animated: true, completion: nil)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         let deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
             
+            AlertasProvider.alertRemover(self, action: {
+                if let restricao = rest.key{
+                    FirebaseDatabaseProvider.sharedInstance.removerRestricao(FirebaseDatabaseProvider.sharedInstance.getUserId(), restricao, completion: { _ in
+                        self.getRestricoes()
+                    })
+                }
+            })
         });
         
         return [deleteRowAction, moreRowAction];

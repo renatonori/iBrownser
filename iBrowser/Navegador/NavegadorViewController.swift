@@ -11,7 +11,7 @@ import PKHUD
 import Alamofire
 import Kanna
 import SafariServices
-class NavegadorViewController: UIViewController,UITextFieldDelegate{
+class NavegadorViewController: CustomViewController,UITextFieldDelegate{
     
     
     @IBOutlet weak var situacaoSiteLabel: UILabel!
@@ -37,6 +37,7 @@ class NavegadorViewController: UIViewController,UITextFieldDelegate{
         
     }
     func avaliarSite(url:String?){
+        self.buscarSiteTextField.resignFirstResponder()
         guard let urlParaAvaliar = url else {
             return
         }
@@ -91,6 +92,7 @@ class NavegadorViewController: UIViewController,UITextFieldDelegate{
     }
     
     @IBAction func cancelarClicado(_ sender: Any) {
+        self.buscarSiteTextField.resignFirstResponder()
         self.situacaoSiteLabel.text = ""
         self.buscarSiteTextField.text = ""
     }

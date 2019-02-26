@@ -16,6 +16,15 @@ class BloquearConteudoAdultoViewController: UIViewController {
     @IBOutlet weak var blockSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     
+    var dipositivoKey:String!{
+        get{
+            guard let tabController = self.tabBarController as? DispositivosTabBarViewController else{
+                return ""
+            }
+            return tabController.getKey()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColors.backgroundColor()
@@ -28,11 +37,8 @@ class BloquearConteudoAdultoViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let tabBar = self.tabBarController as? DispositivosTabBarViewController
-        let value = tabBar?.getInfoDispositivo()
-        let dispID = value?.key
         
-        FirebaseDatabaseProvider.sharedInstance.getBloqueio(dispID!) { (bloqueado) in
+        FirebaseDatabaseProvider.sharedInstance.getBloqueio(self.dipositivoKey) { (bloqueado) in
             self.setButton(withStatus: bloqueado)
             HUD.flash(.success)
         }
@@ -47,10 +53,8 @@ class BloquearConteudoAdultoViewController: UIViewController {
     }
     @IBAction func switchChange(_ sender: Any) {
         if let switchItem = sender as? UISwitch{
-            let tabBar = self.tabBarController as? DispositivosTabBarViewController
-            let value = tabBar?.getInfoDispositivo()
-            let dispID = value?.key
-            FirebaseDatabaseProvider.sharedInstance.setBloquear(dispID!, switchItem.isOn)
+
+            FirebaseDatabaseProvider.sharedInstance.setBloquear(self.dipositivoKey, switchItem.isOn)
             self.setButton(withStatus: switchItem.isOn)
         }
        

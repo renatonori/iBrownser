@@ -18,20 +18,26 @@ class FirebaseDatabaseProvider: NSObject {
     func getUserId()->String{
         return (Auth.auth().currentUser?.uid)!
     }
-    func adicionarFilho(_ nome:String,_ dispNome:String)->(String){
+    func adicionarFilho(_ nome:String,_ dispNome:String, completion:@escaping (_ codeQR:String, _ success:Bool)->Void){
         if let uid = Auth.auth().currentUser?.uid{
             let key =  referenciaPai.child(uid).childByAutoId().key
-            self.referenciaPai.child(uid).child("dispositivos").child(key).child("gerente").setValue(uid)
-            self.referenciaPai.child(uid).child("dispositivos").child(key).child("foiLido").setValue(0)
-            self.referenciaPai.child(uid).child("dispositivos").child(key).child("nome").setValue(nome)
-            self.referenciaPai.child(uid).child("dispositivos").child(key).child("dispoNome").setValue(dispNome)
-            return String(key+";"+uid)
+            let dictAllValues = ["gerente":uid,
+                                 "foiLido":0,
+                                 "nome":nome,
+                                 "dispoNome":dispNome] as [String : Any]
+            
+            self.referenciaPai.child(uid).child("dispositivos").child(key).setValue(dictAllValues) { (error, database) in
+                completion(String(key+";"+uid),error != nil)
+            }
         }
-        return ""
+        
     }
-    func removerFilho(_ userID:String){
+    func removerFilho(_ dispKey:String,completion:@escaping (_ finished:Bool)->Void){
         if let uid = Auth.auth().currentUser?.uid{
-            self.referenciaPai.child(uid).child("dispositivos").child(userID).setValue(nil)
+            self.referenciaPai.child(uid).child("dispositivos").child(dispKey).setValue(nil) { (error, reference) in
+                completion(error != nil)
+            }
+            
         }
     }
     func esperandoDispositivoFilhoLinkar(_ filhoID:String, completion:@escaping (_ success:Bool)->Void){
@@ -63,6 +69,7 @@ class FirebaseDatabaseProvider: NSObject {
                                 let nome = dict.value(forKey: "nome") as? String ?? ""
                                 let dispoNome = dict.value(forKey: "dispoNome") as? String ?? ""
                                 let disp:dispositivo = dispositivo(key: key as! String, dispositivoNome: dispoNome, nomeFilho: nome, status: "")
+                                
                                 array.append(disp)
                             }
                         }
@@ -73,6 +80,20 @@ class FirebaseDatabaseProvider: NSObject {
                     
                 }
             })
+        }
+    }
+    func removerDevice(_ deviceID:String,completion:@escaping (Bool)->Void){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(deviceID).setValue(nil) { (error, reference) in
+                completion(error == nil)
+            }
+        }
+    }
+    func editarDevice(_ deviceID:String,_ nome:String,nomeDisp:String,completion:@escaping (Bool)->Void){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(deviceID).updateChildValues(["nome":nome,"dispoNome":nomeDisp]) { (error, reference) in
+                completion(error == nil)
+            }
         }
     }
     func adicionarPai(){
@@ -87,34 +108,40 @@ class FirebaseDatabaseProvider: NSObject {
     }
     func setBloquear(_ deviceID:String,_ bloquear:Bool){
         if let uid = Auth.auth().currentUser?.uid{
- self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").setValue(bloquear)
+            self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").setValue(bloquear)
         }
     }
     func getBloquearStatus(_ deviceID:String, completion:@escaping (Bool)->Void){
-       if let uid = Auth.auth().currentUser?.uid{
-        self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").observe(.value, with: { snapshot in
-            if(snapshot.exists()){
-                if let bloq = snapshot.value as? Bool{
-                    completion(bloq)
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(deviceID).child("bloquear").observe(.value, with: { snapshot in
+                if(snapshot.exists()){
+                    if let bloq = snapshot.value as? Bool{
+                        completion(bloq)
+                    }else{
+                        completion(false)
+                    }
                 }else{
                     completion(false)
                 }
-            }else{
-                completion(false)
-            }
-        })
+            })
         }
     }
     
-    func adicionarExcecoes(_ deviceID:String,_ gerenteID:String, _ link:String){
-        //referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).observe(.value, with: { snapshot in
-        // if(snapshot.exists()){
-        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
-        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).setValue(["link":"https://"+link])
-        //}
-        //})
+    func adicionarExcecoes(_ deviceID:String,_ gerenteID:String, _ link:String, completion:@escaping (_ finished:Bool)->Void){
+        
+        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").childByAutoId().key
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).setValue(["link":link]) { (error, reference) in
+            completion(error != nil)
+        }
+        
         
     }
+    func editarExcecoes(_ deviceID:String,_ gerenteID:String,_ key:String,_ link:String, completion:@escaping(_ finished:Bool)->Void){
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).updateChildValues(["link":link]) { (error, referente) in
+            completion(error != nil)
+        }
+    }
+    
     func getExcecoes(_ deviceID:String,_ gerenteID:String,completion:@escaping (_ devices:Array<ExcecaoModel>)->Void){
         self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").observe(.value, with: { snapshot in
             if(snapshot.exists()){
@@ -138,18 +165,31 @@ class FirebaseDatabaseProvider: NSObject {
         })
         
     }
-    func adicionarRestricao(_ deviceID:String,_ gerenteID:String, _ link:String){
-        //referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).observe(.value, with: { snapshot in
-        // if(snapshot.exists()){
+    
+    func removerExcecoes(_ userID:String, _ restrictionID:String,completion:@escaping (Bool)->Void){
+        if let uid = Auth.auth().currentUser?.uid{
+            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("excecoes").child(restrictionID).setValue(nil) { (error, reference) in
+                completion(error == nil)
+            }
+        }
+    }
+    func adicionarRestricao(_ deviceID:String,_ gerenteID:String, _ link:String,completion:@escaping (_ finished:Bool)->Void){
         let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
-        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue(["link":"https://"+link])
-        //}
-        //})
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue((["link":link])) { (error, referente) in
+            completion(error != nil)
+        }
         
     }
-    func removerRestricao(_ userID:String, _ restrictionID:String){
+    func editarRestricao(_ deviceID:String,_ gerenteID:String,_ key:String,_ link:String, completion:@escaping(_ finished:Bool)->Void){
+        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).updateChildValues(["link":link]) { (error, referente) in
+            completion(error != nil)
+        }
+    }
+    func removerRestricao(_ userID:String, _ restrictionID:String,completion:@escaping (Bool)->Void){
         if let uid = Auth.auth().currentUser?.uid{
-            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("restricoes").child(restrictionID).setValue(nil)
+            self.referenciaPai.child(uid).child("dispositivos").child(userID).child("restricoes").child(restrictionID).setValue(nil) { (error, reference) in
+                completion(error == nil)
+            }
         }
     }
     func getBloqueio(_ userID:String, completion:@escaping (Bool)->Void){

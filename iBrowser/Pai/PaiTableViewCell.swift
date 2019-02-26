@@ -14,7 +14,7 @@ class PaiTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var dispositivo: UILabel!
-    
+    var key:String?
     override func awakeFromNib() {
         super.awakeFromNib()
 

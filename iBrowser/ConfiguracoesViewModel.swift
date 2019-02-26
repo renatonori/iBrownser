@@ -20,7 +20,7 @@ class ConfiguracoesViewModel: NSObject {
     class func criarArray()->Array<config>{
         var array:Array<config> = []
         
-        array.append(config(nome: "Editar Senha", viewControllerToGo: EditarPerfilConfiguracoesViewController()))
+        //array.append(config(nome: "Editar Senha", viewControllerToGo: EditarPerfilConfiguracoesViewController()))
         //array.append(config(nome: "Notificações", viewControllerToGo: NotificacoesConfiguracoesViewController()))
         array.append(config(nome: "Sair", viewControllerToGo: nil))
         

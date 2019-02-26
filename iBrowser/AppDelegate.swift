@@ -18,19 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         FirebaseProvider.sharedInstance.configurarFirebase()
         
-        if FirebaseProvider.sharedInstance.usuarioLogado(){
-            comecarLogadoComoPai()
-            FirebaseProvider.sharedInstance.adicionarObservadorDeAutenticacao()
-        }else{
-            if (UserDefaultsProvider.getDispID() != nil) && (UserDefaultsProvider.getGerenteID() != nil){
-                comecarNoNavegador()
-            }else{
-                comecarNoLogin()
-            }
-        }
+         comecarNoNavegador()
+//        if FirebaseProvider.sharedInstance.usuarioLogado(){
+//            comecarLogadoComoPai()
+//            FirebaseProvider.sharedInstance.adicionarObservadorDeAutenticacao()
+//        }else{
+//            if (UserDefaultsProvider.getDispID() != nil) && (UserDefaultsProvider.getGerenteID() != nil){
+//                comecarNoNavegador()
+//            }else{
+//                comecarNoLogin()
+//            }
+//        }
         return true
     }
 

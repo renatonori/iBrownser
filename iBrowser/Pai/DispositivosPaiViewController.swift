@@ -15,7 +15,7 @@ struct dispositivo{
     var status:String = ""
 }
 
-class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class DispositivosPaiViewController: CustomViewController,UITableViewDataSource,UITableViewDelegate {
     var refreshControl: UIRefreshControl!
     @IBOutlet weak var topViewWithImage: UIView!
     @IBOutlet weak var dispositivosTableView: UITableView!
@@ -87,6 +87,7 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         paiCell.name.text = disp.nomeFilho
         paiCell.dispositivo.text = disp.dispositivoNome
         paiCell.status.text = disp.status
+        paiCell.key = disp.key
         
         if paiCell.status.text != "Registrado"{
             paiCell.status.textColor = UIColor.red
@@ -98,7 +99,6 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
         tableView.deselectRow(at: indexPath, animated: true)
         let disp:dispositivo = dispositivos[indexPath.row]
         DispositivoCoordinator.pushDispositivosTabBarViewController(navigationController: navigationController,disp.nomeFilho, dispositivo: disp);
-        FirebaseDatabaseProvider.sharedInstance.adicionarPai()
     }
     func okayAlert(){
         let okayAlertController = UIAlertController(title: "Complete antes de continuar", message: "", preferredStyle: .alert)
@@ -107,60 +107,58 @@ class DispositivosPaiViewController: UIViewController,UITableViewDataSource,UITa
             
         })
         okayAlertController.addAction(okayAction)
+
         self.present(okayAlertController, animated: true, completion: nil)
     }
     
     func adicionarDispositivo(){
-        let alertController = UIAlertController(title: "Complete Todos os campos", message: "", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Okay", style: .default, handler: {
-            alert -> Void in
-            
-            let firstTextField = alertController.textFields![0] as UITextField
-            let secondTextField = alertController.textFields![1] as UITextField
-            
-            guard let name = firstTextField.text, name != "" else{
-                self.okayAlert()
-                return
-            }
-            guard let nomeDisp = secondTextField.text, nomeDisp != "" else{
-                self.okayAlert()
-                return
-            }
-            
-            PaiCoordinator.pushAdicionarDeviceViewController(nome: name, nomeDisp: nomeDisp, navigationController: self.tabBarController?.navigationController)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Nome do Dispositivo"
+        let controller = AdicionarEditarViewController.getInstance()
+        controller.tipoDaAcao = .device
+        controller.isEdit = false
+        controller.addDeviceBlock = { qrCode,nome,nomeDisp, sucess in
+            PaiCoordinator.pushAdicionarDeviceViewController(qrCode:qrCode, nome: nome, nomeDisp: nomeDisp, navigationController: self.tabBarController?.navigationController)
         }
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Tipo do Dispositivo"
-        }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+
+        self.present(controller, animated: true, completion: nil)
+//        
+//        AlertasProvider.alertAdicionarDisp(self, placeholders: ["Nome do Dispositivo","Tipo do Dispositivo"], textFields: ["",""]) { (newValues) in
+//            let name = newValues[0]
+//            let nomeDisp = newValues[1]
+//   
+//        }
+
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
+        let disp:dispositivo = dispositivos[indexPath.row]
         let moreRowAction = UITableViewRowAction(style: .default, title: "Editar", handler:{action, indexpath in
-            
+            self.editar(disp.dispositivoNome, disp.nomeFilho, disp.key)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         let deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
-            
+            self.deletar(disp.key)
         });
-        
         return [deleteRowAction, moreRowAction];
+    }
+    func deletar(_ key:String){
+        AlertasProvider.alertRemover(self) {
+            
+        }
+    }
+    func editar(_ nome:String, _ tipo:String, _ key:String){
+        let controller = AdicionarEditarViewController.getInstance()
+        controller.tipoDaAcao = .device
+        controller.isEdit = true
+        controller.dipositivoKey = key
+        controller.nomeDispositivoPlaceholder = nome
+        controller.dispositivoPlaceholder = tipo
+        controller.dimissBlock = {
+            self.refresh(sender: self)
+        }
+        self.present(controller, animated: true, completion: nil)
+
     }
     /*
     // MARK: - Navigation

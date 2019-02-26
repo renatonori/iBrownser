@@ -10,6 +10,5 @@ import UIKit
 
 class RestricaoModel: GeneralModel{
     var urlRestricao:URL?
-    
     var stringRestricao:String?
 }

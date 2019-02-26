@@ -28,8 +28,9 @@ class PaiCoordinator: NSObject {
             }
         }
     }
-    static func pushAdicionarDeviceViewController(nome:String,nomeDisp:String,navigationController:UINavigationController?){
+    static func pushAdicionarDeviceViewController(qrCode:String,nome:String,nomeDisp:String,navigationController:UINavigationController?){
         if let viewController = UIStoryboard(name: AppConstants.mainStoryboard, bundle: nil).instantiateViewController(withIdentifier: AdicionarDeviceViewControllerName) as? AdicionarDeviceViewController {
+            viewController.qrCode = qrCode
             viewController.nome = nome
             viewController.nomeDispositivo = nomeDisp
             if let navigator = navigationController {

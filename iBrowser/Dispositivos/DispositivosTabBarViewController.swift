@@ -16,7 +16,6 @@ class DispositivosTabBarViewController: UITabBarController,UITabBarControllerDel
         super.viewDidLoad()
         self.delegate = self
         
-        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -27,9 +26,16 @@ class DispositivosTabBarViewController: UITabBarController,UITabBarControllerDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func getInfoDispositivo()->dispositivo?{
-        return self.infoDispositivo
+    func getKey()->String{
+        guard let key:String = infoDispositivo?.key else{
+            return ""
+        }
+        return key
     }
+//    func getInfoDispositivo()->dispositivo?{
+//        return self.infoDispositivo
+//    }
+    
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ScrollingTransitionAnimator(tabBarController: tabBarController, lastIndex: tabBarController.selectedIndex)
     }

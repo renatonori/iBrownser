@@ -12,6 +12,15 @@ class ExcecoesTableViewController: UITableViewController {
 
     var arrayExcecoes:Array<ExcecaoModel> = []
     
+    var dipositivoKey:String!{
+        get{
+            guard let tabController = self.tabBarController as? DispositivosTabBarViewController else{
+                return ""
+            }
+            return tabController.getKey()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColors.backgroundColor()
@@ -38,15 +47,12 @@ class ExcecoesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.getExcecoes()
     }
     
     func getExcecoes(){
-        let tabBar = self.tabBarController as? DispositivosTabBarViewController
-        let value = tabBar?.getInfoDispositivo()
-        let dispID = value?.key
-        FirebaseDatabaseProvider.sharedInstance.getExcecoes(dispID!, FirebaseDatabaseProvider.sharedInstance.getUserId()) { (array) in
+
+        FirebaseDatabaseProvider.sharedInstance.getExcecoes(self.dipositivoKey, FirebaseDatabaseProvider.sharedInstance.getUserId()) { (array) in
             self.arrayExcecoes = array
             self.tableView.reloadData()
         }
@@ -64,31 +70,14 @@ class ExcecoesTableViewController: UITableViewController {
         
     }
     func adicionarNovaExcecao(){
-        let alertController = UIAlertController(title: "Complete para adicionar uma exceção!", message: "", preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Adicionar", style: .default, handler: {
-            alert -> Void in
-            
-            let firstTextField = alertController.textFields![0] as UITextField
-            let teste = self.tabBarController as? DispositivosTabBarViewController
-            let value = teste?.getInfoDispositivo()
-            let dispID = value?.key
-            FirebaseDatabaseProvider.sharedInstance.adicionarExcecoes(dispID!,FirebaseDatabaseProvider.sharedInstance.getUserId() , firstTextField.text!)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Insira o link do site"
+        let controller = AdicionarEditarViewController.getInstance()
+        controller.tipoDaAcao = .excecao
+        controller.dipositivoKey = dipositivoKey
+        controller.isEdit = false
+        controller.dimissBlock = {
+            self.getExcecoes()
         }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -100,17 +89,30 @@ class ExcecoesTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        let exce = arrayExcecoes[indexPath.row]
         let moreRowAction = UITableViewRowAction(style: .default, title: "Editar", handler:{action, indexpath in
-            
+            let controller = AdicionarEditarViewController.getInstance()
+            controller.dipositivoKey = self.dipositivoKey
+            controller.tipoDaAcao = .excecao
+            controller.isEdit = true
+            controller.linkPlaceholder = exce.stringExcecao!
+            controller.exectionKey = exce.key!
+            controller.dimissBlock = {
+                self.getExcecoes()
+            }
+            self.present(controller, animated: true, completion: nil)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
-        var deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
-            let row = indexPath.row
-            if let excecao = self.arrayExcecoes[row].key{
-                FirebaseDatabaseProvider.sharedInstance.removerRestricao(FirebaseDatabaseProvider.sharedInstance.getUserId(), excecao)
-            }
-
+        let deleteRowAction = UITableViewRowAction(style: .default, title: "Remover", handler:{action, indexpath in
+  
+            AlertasProvider.alertRemover(self, action: {
+                if let excecao = exce.key{
+                    FirebaseDatabaseProvider.sharedInstance.removerExcecoes(FirebaseDatabaseProvider.sharedInstance.getUserId(), excecao, completion: { _ in
+                        self.getExcecoes()
+                    })
+                }
+            })
         });
         
         return [deleteRowAction, moreRowAction];

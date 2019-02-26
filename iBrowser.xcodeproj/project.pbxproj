@@ -50,9 +50,11 @@
 		A92FD39F209681850005506C /* NudityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD39E209681850005506C /* NudityClassifier.swift */; };
 		A92FD3A32098A88C0005506C /* UIImage+PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FD3A22098A88C0005506C /* UIImage+PixelBuffer.swift */; };
 		A92FD3A52098A8940005506C /* Nudity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A92FD3A42098A8940005506C /* Nudity.mlmodel */; };
+		A936CF3220B21C8900637894 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936CF3120B21C8900637894 /* CustomViewController.swift */; };
 		A95306CE1EF660F10040C43C /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306CD1EF660F10040C43C /* FirebaseProvider.swift */; };
 		A95306D11EF667B60040C43C /* CadastrarUsuarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */; };
 		A95306D31EF667C90040C43C /* CadastrarUsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */; };
+		A98A46F3212B512300F8EADB /* AdicionarEditarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A46F2212B512300F8EADB /* AdicionarEditarViewController.swift */; };
 		A98AED4D20841D9500D119B6 /* RestricaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED4C20841D9500D119B6 /* RestricaoModel.swift */; };
 		A98AED4F20841EA100D119B6 /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED4E20841EA100D119B6 /* GeneralModel.swift */; };
 		A98AED51208587A000D119B6 /* RestricoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98AED50208587A000D119B6 /* RestricoesTableViewController.swift */; };
@@ -143,9 +145,11 @@
 		A92FD39E209681850005506C /* NudityClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NudityClassifier.swift; sourceTree = "<group>"; };
 		A92FD3A22098A88C0005506C /* UIImage+PixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+PixelBuffer.swift"; sourceTree = "<group>"; };
 		A92FD3A42098A8940005506C /* Nudity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Nudity.mlmodel; sourceTree = "<group>"; };
+		A936CF3120B21C8900637894 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		A95306CD1EF660F10040C43C /* FirebaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseProvider.swift; path = Providers/FirebaseProvider.swift; sourceTree = "<group>"; };
 		A95306D01EF667B60040C43C /* CadastrarUsuarioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioViewModel.swift; path = Login/CadastrarUsuarioViewModel.swift; sourceTree = "<group>"; };
 		A95306D21EF667C90040C43C /* CadastrarUsuarioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CadastrarUsuarioModel.swift; path = Login/CadastrarUsuarioModel.swift; sourceTree = "<group>"; };
+		A98A46F2212B512300F8EADB /* AdicionarEditarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarEditarViewController.swift; sourceTree = "<group>"; };
 		A98AED4C20841D9500D119B6 /* RestricaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestricaoModel.swift; sourceTree = "<group>"; };
 		A98AED4E20841EA100D119B6 /* GeneralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
 		A98AED50208587A000D119B6 /* RestricoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestricoesTableViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				A904172F1EC58EE2005E6505 /* iBrowser.xcdatamodeld */,
 				A90417591EC59575005E6505 /* AppConstants.swift */,
 				A904175B1EC595B7005E6505 /* AppColors.swift */,
+				A936CF3120B21C8900637894 /* CustomViewController.swift */,
 			);
 			path = iBrowser;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				A904177D1EC5DEBA005E6505 /* PaiTableViewCell.swift */,
 				A90417841ED50254005E6505 /* PaiTabBarViewController.swift */,
 				A98AED4E20841EA100D119B6 /* GeneralModel.swift */,
+				A98A46F2212B512300F8EADB /* AdicionarEditarViewController.swift */,
 			);
 			name = Pai;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				A92FD39F209681850005506C /* NudityClassifier.swift in Sources */,
 				A92492641EF8F69400FECD7D /* ConfiguracoesModel.swift in Sources */,
 				A92492571EF755D200FECD7D /* AlertasProvider.swift in Sources */,
+				A936CF3220B21C8900637894 /* CustomViewController.swift in Sources */,
 				A95306CE1EF660F10040C43C /* FirebaseProvider.swift in Sources */,
 				A90417671EC5AD05005E6505 /* StartViewController.swift in Sources */,
 				A904177A1EC5D546005E6505 /* RecuperarSenhaViewController.swift in Sources */,
@@ -736,6 +743,7 @@
 				A9F9417B20A42BB900A57F02 /* NaiveBayesClassifierRequest.swift in Sources */,
 				A904175C1EC595B7005E6505 /* AppColors.swift in Sources */,
 				A90417721EC5B637005E6505 /* PaiCoordinator.swift in Sources */,
+				A98A46F3212B512300F8EADB /* AdicionarEditarViewController.swift in Sources */,
 				A904175A1EC59575005E6505 /* AppConstants.swift in Sources */,
 				A9F6DBEC1EE506F400E497CE /* TelaCarregarBloqueante.swift in Sources */,
 				A90417741EC5B64D005E6505 /* PaiModel.swift in Sources */,
