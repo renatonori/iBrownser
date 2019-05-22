@@ -1,6 +1,0 @@
-framework module Pods_iBrowserTests {
-  umbrella header "Pods-iBrowserTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
