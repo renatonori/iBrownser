@@ -1,7 +1,7 @@
 {
   "name": "FirebaseStorage",
-  "version": "2.2.0",
-  "summary": "Firebase Storage for iOS",
+  "version": "3.2.1",
+  "summary": "Firebase Storage for iOS (plus community support for macOS and tvOS)",
   "description": "Firebase Storage provides robust, secure file uploads and downloads from Firebase SDKs, powered by Google Cloud Storage.",
   "homepage": "https://firebase.google.com",
   "license": {
@@ -11,12 +11,12 @@
   "authors": "Google, Inc.",
   "source": {
     "git": "https://github.com/firebase/firebase-ios-sdk.git",
-    "tag": "2.2.0"
+    "tag": "Storage-3.2.1"
   },
   "social_media_url": "https://twitter.com/Firebase",
   "platforms": {
-    "ios": "7.0",
-    "osx": "10.10",
+    "ios": "8.0",
+    "osx": "10.11",
     "tvos": "10.0"
   },
   "cocoapods_version": ">= 1.4.0",
@@ -25,25 +25,50 @@
   "source_files": "Firebase/Storage/**/*.[mh]",
   "public_header_files": "Firebase/Storage/Public/*.h",
   "ios": {
-    "frameworks": "MobileCoreServices",
-    "dependencies": {
-      "FirebaseAnalytics": [
-        "~> 4.0"
-      ]
-    }
+    "frameworks": "MobileCoreServices"
   },
   "osx": {
     "frameworks": "CoreServices"
   },
   "dependencies": {
+    "FirebaseAuthInterop": [
+      "~> 1.0"
+    ],
     "FirebaseCore": [
-      "~> 4.0"
+      "~> 6.0"
     ],
     "GTMSessionFetcher/Core": [
       "~> 1.1"
     ]
   },
   "pod_target_xcconfig": {
-    "GCC_PREPROCESSOR_DEFINITIONS": "FIRStorage_VERSION=2.2.0"
-  }
+    "GCC_C_LANGUAGE_STANDARD": "c99",
+    "GCC_PREPROCESSOR_DEFINITIONS": "FIRStorage_VERSION=3.2.1"
+  },
+  "testspecs": [
+    {
+      "name": "unit",
+      "test_type": "unit",
+      "source_files": [
+        "Example/Storage/Tests/Unit/*.[mh]",
+        "Example/Shared/FIRComponentTestUtilities.*",
+        "Example/Shared/FIRAuthInteropFake.*"
+      ],
+      "dependencies": {
+        "OCMock": [
+
+        ]
+      }
+    },
+    {
+      "name": "integration",
+      "test_type": "unit",
+      "source_files": "Example/Storage/Tests/Integration/*.[mh]",
+      "requires_app_host": true,
+      "resources": [
+        "Example/Storage/App/1mb.dat",
+        "Example/Storage/App/GoogleService-Info.plist"
+      ]
+    }
+  ]
 }

@@ -29,7 +29,10 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else{
+            return
+        }
         
         // Get an instance of the AVCaptureDeviceInput class using the previous device object.
         
@@ -58,10 +61,10 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         // Do any additional setup after loading the view.
         
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = QRReaderView.layer.bounds
         QRReaderView.layer.addSublayer(videoPreviewLayer!)
         
@@ -69,7 +72,7 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         qrCodeFrameView?.layer.borderColor = UIColor.green.cgColor
         qrCodeFrameView?.layer.borderWidth = 2
         QRReaderView.addSubview(qrCodeFrameView!)
-        QRReaderView.bringSubview(toFront: qrCodeFrameView!)
+        QRReaderView.bringSubviewToFront(qrCodeFrameView!)
         
         
     }
@@ -82,8 +85,11 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         super.viewDidAppear(animated)
        captureSession?.startRunning()
     }
-    func getQRValues(_ valor:String){
-        let values = valor.components(separatedBy: ";")
+    func getQRValues(_ valor:String?){
+        
+        guard let values = valor?.components(separatedBy: ";") else{
+            return
+        }
         UserDefaultsProvider.setDispID(values[0])
         UserDefaultsProvider.setGerenteID(values[1])
         _ = FirebaseDatabaseProvider.sharedInstance.linkLido(UserDefaultsProvider.getDispID()!, UserDefaultsProvider.getGerenteID()!)
@@ -97,14 +103,15 @@ class AtivarFilhoViewController: UIViewController,AVCaptureMetadataOutputObjects
         
         // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        
         getQRValues(metadataObj.stringValue)
-        if metadataObj.type == AVMetadataObjectTypeQRCode {
+        if metadataObj.type == AVMetadataObject.ObjectType.qr {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
             qrCodeFrameView?.frame = barCodeObject.bounds
             
             if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+                print(metadataObj.stringValue ?? "")
             }
         }
         leituraQRCodeFinalizada(true)

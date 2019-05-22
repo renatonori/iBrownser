@@ -20,22 +20,22 @@ func tag(text: String, scheme: String) -> [TaggedToken] {
     var tokens: [TaggedToken] = []
     
     // Using NSLinguisticTagger
-    tagger.enumerateTags(in: NSMakeRange(0, text.count), scheme:scheme, options: options) { tag, tokenRange, _, _ in
+    tagger.enumerateTags(in: NSMakeRange(0, text.count), scheme:NSLinguisticTagScheme(rawValue: scheme), options: options) { tag, tokenRange, _, _ in
         let token = (text as NSString).substring(with: tokenRange)
-        tokens.append((token, tag))
+        tokens.append((token, tag.map { $0.rawValue }))
     }
     return tokens
 }
 
 func partOfSpeech(text: String) -> [TaggedToken] {
-    return tag(text: text, scheme: NSLinguisticTagSchemeLexicalClass)
+    return tag(text: text, scheme: NSLinguisticTagScheme.lexicalClass.rawValue)
 }
 func lemmatize(text: String) -> [TaggedToken] {
-    return tag(text: text, scheme: NSLinguisticTagSchemeLemma)
+    return tag(text: text, scheme: NSLinguisticTagScheme.lemma.rawValue)
 }
 
 func language(text: String) -> [TaggedToken] {
-    return tag(text: text, scheme: NSLinguisticTagSchemeLanguage)
+    return tag(text: text, scheme: NSLinguisticTagScheme.language.rawValue)
 }
 public typealias Category = String
 

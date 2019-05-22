@@ -1,7 +1,7 @@
 {
   "name": "FirebaseCore",
-  "version": "4.0.20",
-  "summary": "Firebase Core for iOS",
+  "version": "6.0.1",
+  "summary": "Firebase Core for iOS (plus community support for macOS and tvOS)",
   "description": "Firebase Core includes FIRApp and FIROptions which provide central configuration for other Firebase services.",
   "homepage": "https://firebase.google.com",
   "license": {
@@ -11,12 +11,12 @@
   "authors": "Google, Inc.",
   "source": {
     "git": "https://github.com/firebase/firebase-ios-sdk.git",
-    "tag": "4.0.20"
+    "tag": "Core-6.0.1"
   },
   "social_media_url": "https://twitter.com/Firebase",
   "platforms": {
-    "ios": "7.0",
-    "osx": "10.10",
+    "ios": "8.0",
+    "osx": "10.11",
     "tvos": "10.0"
   },
   "cocoapods_version": ">= 1.4.0",
@@ -27,20 +27,33 @@
     "Firebase/Core/Public/*.h",
     "Firebase/Core/Private/*.h"
   ],
-  "private_header_files": [
-    "Firebase/Core/Private/*.h",
-    "Firebase/Core/third_party/*.h"
-  ],
-  "frameworks": [
-    "Foundation",
-    "SystemConfiguration"
-  ],
+  "private_header_files": "Firebase/Core/Private/*.h",
+  "frameworks": "Foundation",
   "dependencies": {
-    "GoogleToolboxForMac/NSData+zlib": [
-      "~> 2.1"
+    "GoogleUtilities/Environment": [
+      "~> 6.0"
+    ],
+    "GoogleUtilities/Logger": [
+      "~> 6.0"
     ]
   },
   "pod_target_xcconfig": {
-    "OTHER_CFLAGS": "-fno-autolink -DFIRCore_VERSION=4.0.20 -DFirebase_VERSION=4.13.0"
-  }
+    "GCC_C_LANGUAGE_STANDARD": "c99",
+    "GCC_PREPROCESSOR_DEFINITIONS": "FIRCore_VERSION=6.0.1 Firebase_VERSION=6.1.0",
+    "OTHER_CFLAGS": "-fno-autolink"
+  },
+  "testspecs": [
+    {
+      "name": "unit",
+      "test_type": "unit",
+      "source_files": "Example/Core/Tests/**/*.[mh]",
+      "requires_app_host": true,
+      "dependencies": {
+        "OCMock": [
+
+        ]
+      },
+      "resources": "Example/Core/App/GoogleService-Info.plist"
+    }
+  ]
 }

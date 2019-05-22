@@ -45,7 +45,7 @@ class StartViewController: UIViewController {
         HUD.show(.progress)
         StartViewModel.logarUsuario(emailTextField.text, senhaTextField.text) { (sucesso, msgDeErro) in
             if !sucesso{
-                HUD.flash(.error, delay: 0.5)
+                HUD.hide()
                 let alert:UIAlertController = AlertasProvider.alertaSimples("", msgDeErro)
                 self.present(alert, animated: true, completion: nil)
             }else{

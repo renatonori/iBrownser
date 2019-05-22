@@ -19,8 +19,8 @@ class FirebaseDatabaseProvider: NSObject {
         return (Auth.auth().currentUser?.uid)!
     }
     func adicionarFilho(_ nome:String,_ dispNome:String, completion:@escaping (_ codeQR:String, _ success:Bool)->Void){
-        if let uid = Auth.auth().currentUser?.uid{
-            let key =  referenciaPai.child(uid).childByAutoId().key
+        if let uid = Auth.auth().currentUser?.uid, let key =  referenciaPai.child(uid).childByAutoId().key{
+            
             let dictAllValues = ["gerente":uid,
                                  "foiLido":0,
                                  "nome":nome,
@@ -129,9 +129,11 @@ class FirebaseDatabaseProvider: NSObject {
     
     func adicionarExcecoes(_ deviceID:String,_ gerenteID:String, _ link:String, completion:@escaping (_ finished:Bool)->Void){
         
-        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").childByAutoId().key
-        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).setValue(["link":link]) { (error, reference) in
-            completion(error != nil)
+        if let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").childByAutoId().key{
+            self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("excecoes").child(key).setValue(["link":link]) { (error, reference) in
+                completion(error != nil)
+            }
+            
         }
         
         
@@ -174,9 +176,11 @@ class FirebaseDatabaseProvider: NSObject {
         }
     }
     func adicionarRestricao(_ deviceID:String,_ gerenteID:String, _ link:String,completion:@escaping (_ finished:Bool)->Void){
-        let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key
-        self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue((["link":link])) { (error, referente) in
-            completion(error != nil)
+        if let key = self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").childByAutoId().key{
+            self.referenciaPai.child(gerenteID).child("dispositivos").child(deviceID).child("restricoes").child(key).setValue((["link":link])) { (error, referente) in
+                completion(error != nil)
+            }
+            
         }
         
     }

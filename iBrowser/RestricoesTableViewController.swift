@@ -27,7 +27,7 @@ class RestricoesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.view.backgroundColor = AppColors.backgroundColor()
         self.tableView.backgroundColor = AppColors.backgroundColor()
-        self.tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        self.tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         // Do any additional setup after loading the view.
     }
     @objc func refresh(sender:Any){
@@ -72,7 +72,7 @@ class RestricoesTableViewController: UITableViewController {
         return 50
         
     }
-    func adicionarNovaRestricao(){
+    @objc func adicionarNovaRestricao(){
         let controller = AdicionarEditarViewController.getInstance()
         controller.tipoDaAcao = .restricao
         controller.dipositivoKey = dipositivoKey

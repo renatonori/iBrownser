@@ -11,19 +11,9 @@ target 'iBrowser' do
 	pod 'FirebaseAuth', :git => 'https://github.com/firebase/firebase-ios-sdk.git'
 	pod 'FirebaseDatabase', :git => 'https://github.com/firebase/firebase-ios-sdk.git'
 	pod 'FirebaseStorage', :git => 'https://github.com/firebase/firebase-ios-sdk.git'
-  	pod 'PKHUD', '~> 4.0'
-  	pod 'Kanna', :git => 'https://github.com/tid-kijyun/Kanna.git', :branch => 'swift4.1'
-  	pod 'Alamofire', '~> 4.4'
-  	pod 'AlamofireImage', '~> 3.3'
-  
-  target 'iBrowserTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'iBrowserUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  	pod 'PKHUD'
+  	pod 'Kanna'
+  	pod 'Alamofire'
+  	pod 'AlamofireImage'
 
 end

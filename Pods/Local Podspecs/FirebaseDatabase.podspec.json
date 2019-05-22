@@ -1,7 +1,7 @@
 {
   "name": "FirebaseDatabase",
-  "version": "4.1.5",
-  "summary": "Firebase Open Source Libraries for iOS.",
+  "version": "6.0.0",
+  "summary": "Firebase Open Source Libraries for iOS (plus community support for macOS and tvOS)",
   "description": "Simplify your iOS development, grow your user base, and monetize more effectively with Firebase.",
   "homepage": "https://firebase.google.com",
   "license": {
@@ -11,12 +11,12 @@
   "authors": "Google, Inc.",
   "source": {
     "git": "https://github.com/firebase/firebase-ios-sdk.git",
-    "tag": "4.1.5"
+    "tag": "Database-6.0.0"
   },
   "social_media_url": "https://twitter.com/Firebase",
   "platforms": {
-    "ios": "7.0",
-    "osx": "10.10",
+    "ios": "8.0",
+    "osx": "10.11",
     "tvos": "10.0"
   },
   "cocoapods_version": ">= 1.4.0",
@@ -41,18 +41,43 @@
     "leveldb-library": [
       "~> 1.18"
     ],
+    "FirebaseAuthInterop": [
+      "~> 1.0"
+    ],
     "FirebaseCore": [
-      "~> 4.0"
+      "~> 6.0"
     ]
   },
-  "ios": {
-    "dependencies": {
-      "FirebaseAnalytics": [
-        "~> 4.0"
-      ]
-    }
-  },
   "pod_target_xcconfig": {
-    "GCC_PREPROCESSOR_DEFINITIONS": "FIRDatabase_VERSION=4.1.5"
-  }
+    "GCC_C_LANGUAGE_STANDARD": "c99",
+    "GCC_PREPROCESSOR_DEFINITIONS": "FIRDatabase_VERSION=6.0.0"
+  },
+  "testspecs": [
+    {
+      "name": "unit",
+      "test_type": "unit",
+      "source_files": [
+        "Example/Database/Tests/Unit/*.[mh]",
+        "Example/Database/Tests/Helpers/*.[mh]",
+        "Example/Database/Tests/third_party/*.[mh]",
+        "Example/Shared/FIRAuthInteropFake.[mh]",
+        "Example/Shared/FIRComponentTestUtilities.h"
+      ],
+      "resources": [
+        "Example/Database/Tests/infoPlist.strings",
+        "Example/Database/Tests/syncPointSpec.json",
+        "Example/Database/App/GoogleService-Info.plist"
+      ]
+    },
+    {
+      "name": "integration",
+      "test_type": "unit",
+      "source_files": [
+        "Example/Database/Tests/Integration/*.[mh]",
+        "Example/Database/Tests/Helpers/*.[mh]",
+        "Example/Shared/FIRAuthInteropFake.[mh]"
+      ],
+      "resources": "Example/Database/App/GoogleService-Info.plist"
+    }
+  ]
 }

@@ -25,7 +25,7 @@ class ExcecoesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.view.backgroundColor = AppColors.backgroundColor()
         self.tableView.backgroundColor = AppColors.backgroundColor()
-        self.tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        self.tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         // Do any additional setup after loading the view.
     }
     @objc func refresh(sender:Any){
@@ -69,7 +69,7 @@ class ExcecoesTableViewController: UITableViewController {
         return 50
         
     }
-    func adicionarNovaExcecao(){
+    @objc func adicionarNovaExcecao(){
         let controller = AdicionarEditarViewController.getInstance()
         controller.tipoDaAcao = .excecao
         controller.dipositivoKey = dipositivoKey

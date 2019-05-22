@@ -30,7 +30,7 @@ class DispositivosPaiViewController: CustomViewController,UITableViewDataSource,
 
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         refreshControl.clipsToBounds = true
         
         dispositivosTableView.insertSubview(refreshControl, at: 0)
@@ -59,7 +59,7 @@ class DispositivosPaiViewController: CustomViewController,UITableViewDataSource,
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func refresh(sender:AnyObject) {
+    @objc func refresh(sender:AnyObject) {
         FirebaseDatabaseProvider.sharedInstance.getDevices { (dicionarios) in
             
             self.dispositivos = dicionarios
@@ -74,10 +74,10 @@ class DispositivosPaiViewController: CustomViewController,UITableViewDataSource,
         return dispositivos.count
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let paiCell:PaiTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PaiTableViewCell", for: indexPath) as! PaiTableViewCell
@@ -111,7 +111,7 @@ class DispositivosPaiViewController: CustomViewController,UITableViewDataSource,
         self.present(okayAlertController, animated: true, completion: nil)
     }
     
-    func adicionarDispositivo(){
+    @objc func adicionarDispositivo(){
         
         let controller = AdicionarEditarViewController.getInstance()
         controller.tipoDaAcao = .device
